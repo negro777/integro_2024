@@ -10,16 +10,16 @@ function is_palindrome($input) {
     return $input === strrev($input);
 }
 
-// Asegura que solo aceptas solicitudes POST
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Decodifica el JSON enviado desde React
+
     $data = json_decode(file_get_contents('php://input'), true);
-    $input = $data['text']; // Asume que el texto enviado está bajo la clave 'text'
+    $input = $data['text']; 
     $isPalindrome = is_palindrome($input);
 
-    // Devuelve si es palíndromo o no en formato JSON
+  
     echo json_encode(["isPalindrome" => $isPalindrome]);
 } else {
-    // Método no permitido
+   
     echo json_encode(["error" => "Only POST method is accepted"]);
 }
